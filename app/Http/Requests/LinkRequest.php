@@ -8,17 +8,18 @@ use Illuminate\Http\JsonResponse;
 
 class LinkRequest extends FormRequest
 {
-    public function rules()
+    public function rules(): array
     {
         return [
-            'link' => ['required']
+            'link' => ['required', 'unique:links']
         ];
     }
 
     public function messages(): array
     {
         return [
-            'link.required' => 'A link is required!'
+            'link.required' => 'A link is required!',
+            'link.unique' => 'This link already contain!'
         ];
     }
 }
